@@ -1,14 +1,14 @@
 //
-//  SNView.m
-//  FoundationDemo
+//  TPView.m
+//  Taoprone
 //
 //  Created by Rake Yang on 2019/6/28.
 //  Copyright © 2019 BinaryParadise. All rights reserved.
 //
 
-#import "SNView.h"
+#import "TPView.h"
 
-@implementation SNView
+@implementation TPView
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     if (self = [super init]) {

@@ -7,12 +7,11 @@ function initModule() {
     contentView.setBackgroundColor(UIColor.tp_colorWithHex(0x290099));
     var size = contentView.bounds();
     var inset = width/10.0;
-    var subView = UIView.alloc().initWithFrame({x:inset,y:inset,width:size.width-inset,height:size.height-inset});
-    contentView.addSubview(subView)
+    var subView = contentView;
     for (var i = 0; i < 8; i++) {
       size = subView.bounds()
       newView = UIView.alloc().initWithFrame({x:inset,y:inset,width:size.width-inset,height:size.height-inset});
-      newView.setBackgroundColor(UIColor.tp_colorWithHex((i+1)*0x290099));
+      newView.setBackgroundColor(UIColor.tp_colorWithHex((i+2)*0x290099));
       subView.addSubview(newView);
       subView = newView;
     }

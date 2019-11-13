@@ -103,8 +103,8 @@ static NSString * const __oc_isObj      = @"__oc_isObj";
     return [[SNViewController alloc] init];
 }
 
-- (UIView *)View:(NSDictionary *)dict {
-    return [[SNView alloc] init];
+- (TPView *)View:(NSDictionary *)dict {
+    return [[TPView alloc] init];
 }
 
 - (void)dealloc {

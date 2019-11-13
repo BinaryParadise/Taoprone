@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SNView : UIView <SNJSExport>
+@interface TPView : UIView <SNJSExport>
 
 @end
 

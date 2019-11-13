@@ -6,5 +6,5 @@
 //  Copyright © 2019 BinaryParadise. All rights reserved.
 //
 
-#import "SNView.h"
+#import "TPView.h"
 #import "SNViewController.h"

@@ -1,7 +1,7 @@
 var global = this;
 global["SNViewController"] = {__oc_class: "SNViewController"}
 global["UIColor"] = {__oc_class: "UIColor"}
-global["UIView"] = {__oc_class: "UIView"}
+global["UIView"] = {__oc_class: "TPView"}
 global["UIScreen"] = {__oc_class: "UIScreen"}
 Object.defineProperty(Object.prototype, '__c', {value: function(methodName) {
   if (!this.__oc_obj && !this.__oc_class) {
