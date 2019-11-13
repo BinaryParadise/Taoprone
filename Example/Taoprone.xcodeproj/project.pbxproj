@@ -24,6 +24,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		CE2B1B84237BA70D00789E85 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = CE2B1B83237BA70D00789E85 /* main.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,11 +62,12 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		87557082052CBCD22EF837B4 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		87557082052CBCD22EF837B4 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		90F1545EBBA967AE39DB3BB0 /* Pods-Taoprone_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taoprone_Example.release.xcconfig"; path = "Target Support Files/Pods-Taoprone_Example/Pods-Taoprone_Example.release.xcconfig"; sourceTree = "<group>"; };
-		943BD70AC1C9332EE46080EB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		943BD70AC1C9332EE46080EB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		CE2B1B83237BA70D00789E85 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		D238B42C6366BB1B58CACFED /* Pods-Taoprone_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taoprone_Example.debug.xcconfig"; path = "Target Support Files/Pods-Taoprone_Example/Pods-Taoprone_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		D8375235D69E5CA89F973A2A /* Taoprone.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = Taoprone.podspec; path = ../Taoprone.podspec; sourceTree = "<group>"; };
+		D8375235D69E5CA89F973A2A /* Taoprone.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Taoprone.podspec; path = ../Taoprone.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E18ED1A170BD8CA1BD79F365 /* Pods_Taoprone_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Taoprone_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -103,7 +105,6 @@
 				4BB4E1BD38BC1BA925FFD2DD /* Pods-Taoprone_Tests.debug.xcconfig */,
 				39465B8F1230BB0EDBE84080 /* Pods-Taoprone_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -144,14 +145,15 @@
 		6003F593195388D20070C39A /* Example for Taoprone */ = {
 			isa = PBXGroup;
 			children = (
+				6003F5A8195388D20070C39A /* Images.xcassets */,
+				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
+				CE2B1B83237BA70D00789E85 /* main.js */,
+				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
+				6003F594195388D20070C39A /* Supporting Files */,
 				6003F59C195388D20070C39A /* TAPAppDelegate.h */,
 				6003F59D195388D20070C39A /* TAPAppDelegate.m */,
-				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* TAPViewController.h */,
 				6003F5A6195388D20070C39A /* TAPViewController.m */,
-				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
-				6003F5A8195388D20070C39A /* Images.xcassets */,
-				6003F594195388D20070C39A /* Supporting Files */,
 			);
 			name = "Example for Taoprone";
 			path = Taoprone;
@@ -208,7 +210,7 @@
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				AB58B86BF0E5C8F1EF0C1218 /* [CP] Embed Pods Frameworks */,
+				C730E9A18AAFFA3B6EF6B771 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -245,9 +247,9 @@
 		6003F582195388D10070C39A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = TAP;
+				CLASSPREFIX = TP;
 				LastUpgradeCheck = 0720;
-				ORGANIZATIONNAME = rakeyang;
+				ORGANIZATIONNAME = "Rake Yang";
 				TargetAttributes = {
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -259,6 +261,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -282,6 +285,7 @@
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				CE2B1B84237BA70D00789E85 /* main.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,17 +368,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AB58B86BF0E5C8F1EF0C1218 /* [CP] Embed Pods Frameworks */ = {
+		C730E9A18AAFFA3B6EF6B771 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Taoprone_Example/Pods-Taoprone_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MCFoundation/MCFoundation.framework",
+				"${BUILT_PRODUCTS_DIR}/MCJSONKit/MCJSONKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Taoprone/Taoprone.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MCFoundation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MCJSONKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Taoprone.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

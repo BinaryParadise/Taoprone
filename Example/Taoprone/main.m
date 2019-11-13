@@ -2,7 +2,7 @@
 //  main.m
 //  Taoprone
 //
-//  Created by Rake Yangon 11/12/2019.
+//  Created by Rake Yang 11/12/2019.
 //  Copyright (c) 2019 BinaryParadise All rights reserved.
 //
 

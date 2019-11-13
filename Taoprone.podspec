@@ -32,11 +32,11 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'Taoprone/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'Taoprone' => ['Taoprone/Assets/*.png']
-  # }
+   s.resource_bundles = {
+     'Taoprone' => ['Taoprone/Assets/**']
+   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.frameworks = 'UIKit', 'JavaScriptCore'
+  s.dependency 'MCJSONKit', '~> 0.5'
 end
