@@ -25,6 +25,21 @@
         NSDictionary *dict = obj;
         CGSize size = CGSizeMake([dict mc_doubleForKey:@"width"], [dict mc_doubleForKey:@"height"]);
         [self setArgument:&size atIndex:index];
+    } else if (strncmp(@encode(NSUInteger), argType, 1) == 0) {
+        NSUInteger value = [obj unsignedIntegerValue];
+        [self setArgument:&value atIndex:index];
+    } else if (strncmp(@encode(NSInteger), argType, 1) == 0) {
+        NSInteger value = [obj integerValue];
+        [self setArgument:&value atIndex:index];
+    } else if (strncmp(@encode(double), argType, 1) == 0) {
+        double value = [obj doubleValue];
+        [self setArgument:&value atIndex:index];
+    } else if (strncmp(@encode(int), argType, 1) == 0) {
+        NSUInteger value = [obj unsignedIntegerValue];
+        [self setArgument:&value atIndex:index];
+    } else if (strncmp(@encode(long), argType, 1) == 0) {
+        NSUInteger value = [obj unsignedIntegerValue];
+        [self setArgument:&value atIndex:index];
     } else if (strncmp(@encode(id), argType, 1) == 0) {
         id value = obj;
         [self setArgument:&value atIndex:index];

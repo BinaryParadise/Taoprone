@@ -3,20 +3,31 @@ global["TPViewController"] = {__oc_class: "TPViewController"}
 global["UIColor"] = {__oc_class: "UIColor"}
 global["UIView"] = {__oc_class: "TPView"}
 global["UIScreen"] = {__oc_class: "UIScreen"}
-Object.defineProperty(Object.prototype, '__c', {value: function(methodName) {
-  if (!this.__oc_obj && !this.__oc_class) {
-    if (methodName == undefined) {
-      console.error(this, methodName);
+global["UIButton"] = {__oc_class: "TPButton"}
+
+var UIControlStateNormal = 0;
+var UIControlEventTouchUpInside = 1 << 6;
+// OC方法和JS中调用的关系映射
+var methodsMap = {setTitleforState: "setTitle:forState:",
+                  setTitleColorforState: "setTitleColor:forState:",
+                  addTargetactionforControlEvents: "addTarget:action:forControlEvents:"};
+
+if (Object.prototype.__c == undefined) {
+  Object.defineProperty(Object.prototype, '__c', {value: function(methodName) {
+    if (!this.__oc_obj && !this.__oc_class) {
+      if (methodName == undefined) {
+        console.error(this, methodName);
+      }
+      return this[methodName].bind(this);
     }
-    return this[methodName].bind(this);
-  }
-  var self = this
-  return function(){
-    var args = Array.prototype.slice.call(arguments)
-    replaced = methodNameForOC(methodName, args.length);
-    return forwardMethod(self, replaced, args)
-  }
-}});
+    var self = this
+    return function(){
+      var args = Array.prototype.slice.call(arguments)
+      replaced = methodNameForOC(methodName, args.length);
+      return forwardMethod(self, replaced, args)
+    }
+  }});
+}
 
 function forwardMethod(obj, methodName, args) {
   if (args == undefined) {
@@ -26,6 +37,7 @@ function forwardMethod(obj, methodName, args) {
   for (var i = 0; i < args.length; i++) {
     var item = args[i];
     if (item != undefined) {
+      toObjC(item);
       newArg[i] = item.__oc_class ? item.__oc_obj : item;
     }
   }
@@ -33,12 +45,18 @@ function forwardMethod(obj, methodName, args) {
 }
 
 function methodNameForOC(methodName, argcount) {
+  if (methodsMap[methodName] != undefined) {
+    return methodsMap[methodName];
+  }
   var ocname = argcount >= 1 ? methodName+":" : methodName;
   ocname = ocname.replace('__', ':');
   return ocname;
 }
 
 function toObjC(jobj){
+  if (!jobj.__oc_isObj) {
+    return null;
+  }
   for (var variable in jobj) {
     if (typeof jobj[variable] === 'function') {
       TPBridge.__addFunction(jobj, jobj[variable], methodNameForOC(variable, jobj[variable].length));

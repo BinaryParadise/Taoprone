@@ -9,9 +9,12 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+## 预览
 
-## Installation
+<img width="414" height="896" src="https://user-images.githubusercontent.com/8289395/68991560-041a3180-089b-11ea-9500-5d279748515d.png"/>
+
+
+## 安装
 
 Taoprone is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
@@ -20,9 +23,10 @@ it, simply add the following line to your Podfile:
 pod 'Taoprone'
 ```
 
-## Author
+## 开发计划
 
-rakeyang, fenglaijun@gmail.com
+- [ ] 支持脚本热加载
+- [ ] 支持圆角等二级属性设置
 
 ## License
 

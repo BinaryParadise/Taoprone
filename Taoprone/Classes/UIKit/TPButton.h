@@ -1,8 +1,8 @@
 //
-//  SNView.h
-//  FoundationDemo
+//  TPButton.h
+//  Taoprone
 //
-//  Created by Rake Yang on 2019/6/28.
+//  Created by Rake Yang on 2019/11/16.
 //  Copyright © 2019 BinaryParadise. All rights reserved.
 //
 
@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TPView : UIView <TPJSExport>
+@interface TPButton : UIButton <TPJSExport>
 
 @end
 
