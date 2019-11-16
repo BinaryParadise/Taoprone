@@ -1,5 +1,5 @@
 var global = this;
-global["SNViewController"] = {__oc_class: "SNViewController"}
+global["TPViewController"] = {__oc_class: "TPViewController"}
 global["UIColor"] = {__oc_class: "UIColor"}
 global["UIView"] = {__oc_class: "TPView"}
 global["UIScreen"] = {__oc_class: "UIScreen"}
@@ -13,7 +13,7 @@ Object.defineProperty(Object.prototype, '__c', {value: function(methodName) {
   var self = this
   return function(){
     var args = Array.prototype.slice.call(arguments)
-    var replaced = args.length == 1 ? methodName+":" : methodName;
+    replaced = methodNameForOC(methodName, args.length);
     return forwardMethod(self, replaced, args)
   }
 }});
@@ -32,6 +32,38 @@ function forwardMethod(obj, methodName, args) {
   return TPBridge.__invoke(obj, methodName, newArg)
 }
 
+function methodNameForOC(methodName, argcount) {
+  var ocname = argcount >= 1 ? methodName+":" : methodName;
+  ocname = ocname.replace('__', ':');
+  return ocname;
+}
+
 function toObjC(jobj){
+  for (var variable in jobj) {
+    if (typeof jobj[variable] === 'function') {
+      TPBridge.__addFunction(jobj, jobj[variable], methodNameForOC(variable, jobj[variable].length));
+    }
+  }
   return jobj.__oc_obj;
+}
+
+function testRequest(url) {
+  var request = new XMLHttpRequest(); // 新建XMLHttpRequest对象
+  request.onreadystatechange = function () { // 状态发生变化时，函数被回调
+      if (request.readyState === 4) { // 成功完成
+          // 判断响应结果:
+          if (request.status === 200) {
+              // 成功，通过responseText拿到响应的文本:
+              return success(request.responseText);
+          } else {
+              // 失败，根据响应码判断失败原因:
+              return fail(request.status);
+          }
+      } else {
+          // HTTP请求还在继续...
+      }
+  }
+  // 发送请求:
+  request.open('GET', url);
+  request.send();
 }

@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "UIColor+TPBridge.h"
-#import "SNBridgeDefine.h"
+#import "TPBridgeDefine.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TPView : UIView <SNJSExport>
+@interface TPView : UIView <TPJSExport>
 
 @end
 

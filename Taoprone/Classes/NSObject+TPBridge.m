@@ -6,8 +6,7 @@
 //  Copyright © 2019 BinaryParadise. All rights reserved.
 //
 
-#import "TPViewJSExportImpl.h"
-#import "SNKit.h"
+#import "NSObject+TPBridge.h"
 #import <objc/runtime.h>
 #import <objc/message.h>
 #import "UIColor+TPBridge.h"
@@ -18,7 +17,7 @@ static NSString * const __oc_obj        = @"__oc_obj";
 static NSString * const __oc_className  = @"__oc_class";
 static NSString * const __oc_isObj      = @"__oc_isObj";
 
-@implementation TPBridgeExport
+@implementation NSObject (TPBridge)
 
 - (NSInvocation *)invocationWithClass:(Class)cls target:(id)target method:(NSString *)method {
     NSMethodSignature *methodSign;
@@ -45,7 +44,7 @@ static NSString * const __oc_isObj      = @"__oc_isObj";
     if (!invocation) return nil;
     
     for (int i = 2; i<invocation.methodSignature.numberOfArguments; i++) {
-        if (i - 2 < arguments.count-2) {
+        if (i - 2 < arguments.count) {
             [invocation setArgumentWithObject:arguments[i-2] atIndex:i];
         }
     }
@@ -80,35 +79,30 @@ static NSString * const __oc_isObj      = @"__oc_isObj";
     return @{__oc_className: NSStringFromClass([returnValue class]), __oc_obj: returnValue, __oc_isObj:@NO};
 }
 
-@end
+- (void)setFunctions:(NSMutableDictionary *)functions {
+    objc_setAssociatedObject(self, @selector(functions), functions, OBJC_ASSOCIATION_RETAIN_NONATOMIC);    
+}
 
-@interface TPViewJSExportImpl ()
+- (NSMutableDictionary *)functions {
+    return objc_getAssociatedObject(self, _cmd);
+}
 
-@end
-
-@implementation TPViewJSExportImpl
-
-@synthesize ret;
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.ret = YES;
+- (void)invoke:(NSDictionary *)typeInfo addFunction:(JSValue *)function forName:(NSString *)name {
+    if (typeInfo.count) {
+        [self invoke:typeInfo method:NSStringFromSelector(@selector(invoke:addFunction:forName:)) arguments:@[@{}, function, name]];
+        return;
     }
-    return self;
+    if (!self.functions) {
+        self.functions = [NSMutableDictionary dictionary];
+    }
+    
+    if (name) {
+        self.functions[name] = function;
+    }
 }
 
-- (UIViewController *)Controller:(NSDictionary *)dict {
-    return [[SNViewController alloc] init];
-}
+@end
 
-- (TPView *)View:(NSDictionary *)dict {
-    return [[TPView alloc] init];
-}
-
-- (void)dealloc {
-    NSLog(@"");
-}
+@implementation TPBridgeExport
 
 @end

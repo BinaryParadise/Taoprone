@@ -9,19 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <JavascriptCore/JavascriptCore.h>
 
-@class TPView;
-
-@protocol SNJSExport <JSExport>
+@protocol TPJSExport <JSExport>
 
 JSExportAs(__invoke,- (id)invoke:(NSDictionary *)typeInfo method:(NSString *)method arguments:(NSArray *)arguments);
 
-@end
-
-@protocol SNViewJSExport <JSExport>
-
-@property (nonatomic, assign) BOOL ret;
-
-- (TPView *)View:(NSDictionary *)dict;
-- (UIViewController *)Controller:(NSDictionary *)dict;
+JSExportAs(__addFunction, - (void)invoke:(NSDictionary *)typeInfo addFunction:(JSValue *)function forName:(NSString *)name);
 
 @end

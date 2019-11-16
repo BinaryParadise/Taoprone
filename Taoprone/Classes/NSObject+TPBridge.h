@@ -6,16 +6,17 @@
 //  Copyright © 2019 BinaryParadise. All rights reserved.
 //
 
-#import "SNBridgeDefine.h"
+#import "TPBridgeDefine.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TPBridgeExport : NSObject <SNJSExport>
+@interface NSObject (TPBridge)
+
+@property (nonatomic, strong) NSMutableDictionary *functions;
 
 @end
 
-@interface TPViewJSExportImpl : NSObject <SNViewJSExport>
-
+@interface TPBridgeExport : NSObject <TPJSExport>
 
 @end
 
