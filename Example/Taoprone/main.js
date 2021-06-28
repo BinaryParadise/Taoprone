@@ -1,5 +1,5 @@
+console.log('hello');
 function initModule() {
-  debugger
   var vc = TPViewController.init();
 
   /*vc.viewDidLoad = function() {

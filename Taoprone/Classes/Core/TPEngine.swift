@@ -27,10 +27,6 @@ public class TPEngine {
         let newContent = _regex.stringByReplacingMatches(in: jsContent, options: .reportProgress, range: NSMakeRange(0, jsContent.count), withTemplate: _replaceStr)
         var cachePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first!.appending("/Taoprone")
         
-        #if TARGET_IPHONE_SIMULATOR
-        cachePath = "/Users/rakeyang/Github/Taoprone/Example/Taoprone"
-        #endif
-        
         if !FileManager.default.fileExists(atPath: cachePath) {
             try FileManager.default.createDirectory(atPath: cachePath, withIntermediateDirectories: true, attributes: nil);
         }
@@ -38,7 +34,7 @@ public class TPEngine {
         //拼接逻辑脚本
         jsEngine = jsEngine.appending("\n//--------------------业务代码----------------------\n")
         let merged = jsEngine.appending(newContent)
-        let mainJS = cachePath.appending("/.main.js")
+        let mainJS = cachePath.appending("/main.js")
         try merged.write(toFile: mainJS, atomically: true, encoding: .utf8)
 
         jsContext.exceptionHandler = { context, exception in
@@ -54,7 +50,7 @@ public class TPEngine {
         jsContext.setObject(willCallClosure, forKeyedSubscript: NSString("sayHelloToSwift"))
         jsContext.evaluateScript(merged, withSourceURL: URL(fileURLWithPath: mainJS))
         let result = jsContext.objectForKeyedSubscript("initModule").call(withArguments: nil)
-        return result
+        return result?.toObject
     }
 
     class func sdkBundle() -> Bundle {

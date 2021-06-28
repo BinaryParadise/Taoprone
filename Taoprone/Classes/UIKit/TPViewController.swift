@@ -9,18 +9,8 @@
 import UIKit
 import JavaScriptCore
 
-class TPViewController: UIViewController, TPJSExport {
+class TPViewController: UIViewController {
     var functions: [String : Any] = [:]
-    
-    var isObject: Bool = true
-    
-    func __invoke(_ typeInfo: [String : Any], _ method: String, _ arguments: [Any]) -> Any? {
-        return nil
-    }
-    
-    func __add(typeInfo: [String : Any], function: JSValue, for name: String) {
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

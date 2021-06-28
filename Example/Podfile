@@ -10,10 +10,11 @@ end
 `rm Podfile.lock`
 use_frameworks!
 
-platform :ios, '8.0'
+platform :ios, '10.0'
 
 target 'Taoprone_Example' do
   pod 'Taoprone', :path => '../'
+  pod 'SnapKit'
 
   target 'Taoprone_Tests' do
     inherit! :search_paths

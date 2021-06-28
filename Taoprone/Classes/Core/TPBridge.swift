@@ -29,15 +29,15 @@ class TPBridge: NSObject, TPJSExport {
     func __invoke(_ typeInfo: [String : Any], _ method: String, _ arguments: [Any]) -> Any? {
         let cls: AnyClass? = NSClassFromString(typeInfo[__oc_className] as! String)
         let sel = NSSelectorFromString(method)
-        var result: Any?
         if let cls = cls {
             if method == "init" {
                 if cls is TPViewController.Type {
-                    result = TPViewController()
+                    let result = TPViewController()
+                    return [__oc_className: NSStringFromClass(cls), __oc_obj: result, __oc_isObj: true]
                 }
             }
         }
-        return result
+        return nil
     }
     
     func __add(typeInfo: [String : Any], function: JSValue, for name: String) {

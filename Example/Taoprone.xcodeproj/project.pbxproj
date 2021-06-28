@@ -24,6 +24,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		C98E6FF22689D0C400614A8D /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = C98E6FF12689D0C400614A8D /* index.html */; };
 		CE2B1B84237BA70D00789E85 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = CE2B1B83237BA70D00789E85 /* main.js */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		87557082052CBCD22EF837B4 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		90F1545EBBA967AE39DB3BB0 /* Pods-Taoprone_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taoprone_Example.release.xcconfig"; path = "Target Support Files/Pods-Taoprone_Example/Pods-Taoprone_Example.release.xcconfig"; sourceTree = "<group>"; };
 		943BD70AC1C9332EE46080EB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		C98E6FF12689D0C400614A8D /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		CE2B1B83237BA70D00789E85 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		D238B42C6366BB1B58CACFED /* Pods-Taoprone_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taoprone_Example.debug.xcconfig"; path = "Target Support Files/Pods-Taoprone_Example/Pods-Taoprone_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D8375235D69E5CA89F973A2A /* Taoprone.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Taoprone.podspec; path = ../Taoprone.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -144,6 +146,7 @@
 		6003F593195388D20070C39A /* Example for Taoprone */ = {
 			isa = PBXGroup;
 			children = (
+				C98E6FF12689D0C400614A8D /* index.html */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				CE2B1B83237BA70D00789E85 /* main.js */,
@@ -286,6 +289,7 @@
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				C98E6FF22689D0C400614A8D /* index.html in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				CE2B1B84237BA70D00789E85 /* main.js in Resources */,
 			);
@@ -379,12 +383,14 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Taoprone_Example/Pods-Taoprone_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/MCFoundation/MCFoundation.framework",
 				"${BUILT_PRODUCTS_DIR}/MCJSONKit/MCJSONKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Taoprone/Taoprone.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MCFoundation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MCJSONKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Taoprone.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,7 +490,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -518,7 +524,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

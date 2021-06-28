@@ -8,17 +8,21 @@
 
 import UIKit
 import JavaScriptCore
+import WebKit
 import Taoprone
+import SnapKit
 
 class TAPViewController: UIViewController {
     @IBOutlet weak var loadButton: UIButton!
+    var webView: WKWebView?
     var engine: TPEngine?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     @IBAction func reloadJS(sender: UIButton) {
         let filePath = Bundle.main.path(forResource: "main.js", ofType: nil)
-        #if TARGET_IPHONE_SIMULATOR
-        filePath = "/Users/rakeyang/Github/Taoprone/Example/Taoprone/main.js"
-        #endif
         do {
             engine = TPEngine()
             if let moduleVC = try engine?.moduleWithURL(filePath: filePath!) as? UIViewController {
@@ -27,6 +31,20 @@ class TAPViewController: UIViewController {
         } catch {
             print("\(error)")
         }
+    }
+    
+    @IBAction func debugJS(sender: UIButton) {
+        var cachePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first!.appending("/Taoprone")
+        
+        let conf = WKWebViewConfiguration()
+        conf.userContentController.addUserScript(WKUserScript(source: try! String(contentsOfFile: "\(cachePath)/main.js", encoding: .utf8), injectionTime: .atDocumentStart, forMainFrameOnly: false))
+        webView = WKWebView(frame: .zero, configuration: conf)
+        view.addSubview(webView!)
+        webView?.snp.makeConstraints({ make in
+            make.top.equalTo(loadButton.snp.bottom).offset(30)
+            make.bottom.right.left.equalToSuperview()
+        })
+        webView?.loadFileURL(URL(fileURLWithPath: Bundle.main.path(forResource: "index.html", ofType: nil)!), allowingReadAccessTo: Bundle.main.bundleURL)
     }
 
 }

@@ -30,6 +30,10 @@ pod 'Taoprone'
 - [ ] 支持脚本热加载
 - [ ] 支持圆角等二级属性设置
 
+## 踩坑指南
+
+- iOS 14.5 Safari 14.1.1不能断点调试，解决办法：安装Safari Technology Preview，若有闪退情况可重启模拟器
+
 ## License
 
 Taoprone is available under the MIT license. See the LICENSE file for more info.

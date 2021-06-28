@@ -39,5 +39,4 @@ TODO: Add long description of the pod here.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit', 'JavaScriptCore'
-  s.dependency 'MCJSONKit', '~> 0.5'
 end

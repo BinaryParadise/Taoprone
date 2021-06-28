@@ -55,7 +55,7 @@ function methodNameForOC(methodName, argcount) {
 }
 
 function toObjC(jobj){
-  if (!jobj.isObject) {
+  if (!jobj.__oc_isObj) {
     return null;
   }
   for (var variable in jobj) {
@@ -63,6 +63,7 @@ function toObjC(jobj){
       TPBridge.__add(jobj, jobj[variable], methodNameForOC(variable, jobj[variable].length));
     }
   }
+  debugger
   return jobj.__oc_obj;
 }
 
