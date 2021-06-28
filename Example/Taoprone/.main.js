@@ -86,3 +86,41 @@ function testRequest(url) {
   request.open('GET', url);
   request.send();
 }
+
+//--------------------业务代码----------------------
+function initModule() {
+  var vc = TPViewController.__c("init")();
+
+  /*vc.viewDidLoad = function() {
+      vc.__c("view")().__c("setBackgroundColor")(UIColor.__c("tp_colorWithHex")(0xF6F6F6));
+      var width = UIScreen.__c("mainScreen")().__c("bounds")().width;
+      var height = UIScreen.__c("mainScreen")().__c("bounds")().height;
+      var contentView = UIView.__c("alloc")().__c("initWithFrame")({x:16,y:108, width: width - 32, height: width - 32});
+      contentView.__c("setBackgroundColor")(UIColor.__c("tp_colorWithHex")(0x290099));
+      var size = contentView.__c("bounds")();
+      var inset = width/10.0;
+      var subView = contentView;
+      for (var i = 0; i < 8; i++) {
+        size = subView.__c("bounds")()
+        newView = UIView.__c("alloc")().__c("initWithFrame")({x:inset,y:inset,width:size.width-inset,height:size.height-inset});
+        newView.__c("setBackgroundColor")(UIColor.__c("tp_colorWithHex")((i+2)*0x290099));
+        subView.__c("addSubview")(newView);
+        subView = newView;
+      }
+
+      vc.__c("view")().__c("addSubview")(contentView);
+
+      var button = UIButton.__c("buttonWithType")(0);
+      button.__c("setFrame")({x:16,y:height-50-44, width: width - 32, height: 50})
+      button.__c("setBackgroundColor")(UIColor.__c("tp_colorWithHex")(0xFF8000));
+      //多参数调用直接去掉冒号
+      button.__c("setTitleforState")("Taoprone", UIControlStateNormal);
+      button.__c("setTitleColorforState")(UIColor.__c("tp_colorWithHex")(0xFFFFFF), UIControlStateNormal);
+      button.doActionFunction = function() {
+        console.__c("error")("action finished");
+      }
+      button.__c("addTargetactionforControlEvents")(vc, null, UIControlEventTouchUpInside);
+      vc.__c("view")().__c("addSubview")(button);
+  }*/
+  return toObjC(vc);
+}

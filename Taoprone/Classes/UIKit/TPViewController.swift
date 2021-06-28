@@ -6,15 +6,28 @@
 //  Copyright © 2019 BinaryParadise. All rights reserved.
 //
 
-#import "TPViewController.h"
+import UIKit
+import JavaScriptCore
 
-@interface TPViewController ()
-
-@end
-
-@implementation TPViewController
-
-- (void)viewDidLoad {
+class TPViewController: UIViewController, TPJSExport {
+    var functions: [String : Any] = [:]
+    
+    var isObject: Bool = true
+    
+    func __invoke(_ typeInfo: [String : Any], _ method: String, _ arguments: [Any]) -> Any? {
+        return nil
+    }
+    
+    func __add(typeInfo: [String : Any], function: JSValue, for name: String) {
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+    
+/*- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     JSValue *value = [self.functions valueForKey:NSStringFromSelector(_cmd)];
@@ -52,4 +65,4 @@
     [value callWithArguments:nil];
 }
 
-@end
+@end*/
