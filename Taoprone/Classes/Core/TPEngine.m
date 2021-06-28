@@ -13,16 +13,19 @@ static JSContext *jsContext;
 
 @interface TPEngine ()
 
+@property (nonatomic, strong) JSContext *jsContext;
+
+
 @end
 
 @implementation TPEngine
 
-+ (id)moduleWithURL:(NSString *)filePath {
+- (id)moduleWithURL:(NSString *)filePath {
     static NSString *_regexStr = @"(?<!\\\\)\\.\\s*(\\w+)\\s*\\(";
     static NSString *_replaceStr = @".__c(\"$1\")(";
     NSRegularExpression* _regex;
     //引擎
-    NSString *jsEngine = [NSString stringWithContentsOfFile:[[self sdkBundle] pathForResource:@"engine.js" ofType:nil] encoding:NSUTF8StringEncoding error:nil];
+    NSString *jsEngine = [NSString stringWithContentsOfFile:[[self.class sdkBundle] pathForResource:@"engine.js" ofType:nil] encoding:NSUTF8StringEncoding error:nil];
     NSString *jsContent = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     _regex = [NSRegularExpression regularExpressionWithPattern:_regexStr options:0 error:nil];
     jsContent = [_regex stringByReplacingMatchesInString:jsContent options:0 range:NSMakeRange(0, jsContent.length) withTemplate:_replaceStr];
@@ -44,8 +47,11 @@ static JSContext *jsContext;
     };
     jsContext[@"TPBridge"] = [[TPBridgeExport alloc] init];
     [jsContext evaluateScript:merged withSourceURL:[NSURL fileURLWithPath:mainJS]];
-    jsContext[@"hellooc"] =  ^() {
-        NSLog(@"HelloWord");
+    jsContext[@"console"][@"log"] = ^(NSString *msg) {
+        NSLog(@"%@", msg);
+    };
+    jsContext[@"console"][@"error"] = ^(NSString *msg) {
+        NSLog(@"error: %@", msg);
     };
     return [jsContext[@"initModule"] callWithArguments:nil].toObject;
 }
@@ -53,6 +59,10 @@ static JSContext *jsContext;
 + (NSBundle *)sdkBundle {    
     NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:@"Taoprone.bundle" ofType:nil];
     return [NSBundle bundleWithPath:path];
+}
+
+- (void)dealloc {
+    self.jsContext = nil;
 }
 
 @end

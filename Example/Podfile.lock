@@ -4,7 +4,6 @@ PODS:
     - Expecta (~> 1.0)
     - FBSnapshotTestCase/Core (~> 2.0)
     - Specta (~> 1.0)
-  - FBRetainCycleDetector (0.1.4)
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
@@ -13,11 +12,6 @@ PODS:
   - MCFoundation (0.2.2)
   - MCJSONKit (0.5.2):
     - MCFoundation (~> 0.2)
-  - MLeaksFinder (1.0.0):
-    - FBRetainCycleDetector
-  - React (0.11.0):
-    - React/Core (= 0.11.0)
-  - React/Core (0.11.0)
   - Specta (1.0.7)
   - Taoprone (0.1.0):
     - MCJSONKit (~> 0.5)
@@ -26,8 +20,6 @@ DEPENDENCIES:
   - Expecta
   - "Expecta+Snapshots"
   - FBSnapshotTestCase
-  - MLeaksFinder
-  - React
   - Specta
   - Taoprone (from `../`)
 
@@ -35,12 +27,9 @@ SPEC REPOS:
   trunk:
     - Expecta
     - "Expecta+Snapshots"
-    - FBRetainCycleDetector
     - FBSnapshotTestCase
     - MCFoundation
     - MCJSONKit
-    - MLeaksFinder
-    - React
     - Specta
 
 EXTERNAL SOURCES:
@@ -50,15 +39,12 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   "Expecta+Snapshots": dcff217eef506dabd6dfdc7864ea2da321fafbb8
-  FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   MCFoundation: 1c05141cbc900ec15618d7d4c75fb88719d7b658
   MCJSONKit: 64251bf517b756436c185735b6f4edfdede9ec8e
-  MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
-  React: ab1a2e21deb34965c38328d5ec40cc7d12c6050a
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
   Taoprone: 922022f7686e7218e8e30c72e50ac7c8f930a10a
 
-PODFILE CHECKSUM: 9e07ce57771fc66784498e7d758e49e5e3497549
+PODFILE CHECKSUM: a1a1ad72f94fd22b0ca551c8a5893b3b56493462
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1

@@ -13,6 +13,8 @@
 @interface TAPViewController ()
 
 @property (nonatomic, weak) IBOutlet UIButton *loadButton;
+@property (nonatomic, strong) TPEngine *engine;
+
 
 @end
 
@@ -22,11 +24,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.engine = TPEngine.new;
 }
 
 - (IBAction)reloadJS:(UIButton *)buttong {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"main.js" ofType:nil];
-    UIViewController *moduleVC = [TPEngine moduleWithURL:filePath];
+    UIViewController *moduleVC = [self.engine moduleWithURL:filePath];
     if (moduleVC) {
         [self.navigationController pushViewController:moduleVC animated:YES];
     }

@@ -1,5 +1,5 @@
 function initModule() {
-    hellooc();
+    console.log("Hello,world!")
     var vc = TPViewController.alloc().init();
 
     vc.viewDidLoad = function() {

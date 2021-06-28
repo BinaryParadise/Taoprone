@@ -13,7 +13,7 @@
  */
 @interface TPEngine : NSObject
 
-+ (id)moduleWithURL:(NSString *)filePath;
+- (id)moduleWithURL:(NSString *)filePath;
 
 + (NSBundle *)sdkBundle;
 
