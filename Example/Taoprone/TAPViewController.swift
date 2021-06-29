@@ -25,7 +25,8 @@ class TAPViewController: UIViewController {
         let filePath = Bundle.main.path(forResource: "main.js", ofType: nil)
         do {
             engine = TPEngine()
-            if let moduleVC = try engine?.moduleWithURL(filePath: filePath!) as? UIViewController {
+            let moduleVC = try engine?.moduleWithURL(filePath: filePath!)
+            if let moduleVC = moduleVC {
                 navigationController?.pushViewController(moduleVC, animated: true)
             }
         } catch {

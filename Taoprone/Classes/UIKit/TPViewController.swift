@@ -9,50 +9,22 @@
 import UIKit
 import JavaScriptCore
 
-class TPViewController: UIViewController {
-    var functions: [String : Any] = [:]
+class TPViewController: UIViewController, TPJSExport {
+    func __invoke(_ typeInfo: [String : Any], _ method: String, _ arguments: [Any]) -> Any? {
+        return nil
+    }
+    
+    func __add(_ typeInfo: [String : Any], _ function: JSValue, _ name: String) {
+        
+    }    
+    
+    var functions: [String : JSValue] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let name = #function
+        if let value = functions[name] {
+            value.call(withArguments: nil)
+        }
     }
 }
-    
-/*- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    JSValue *value = [self.functions valueForKey:NSStringFromSelector(_cmd)];
-    [value callWithArguments:nil];
-}
-
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-    JSValue *value = [self.functions valueForKey:NSStringFromSelector(_cmd)];
-    [value callWithArguments:nil];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    JSValue *value = [self.functions valueForKey:NSStringFromSelector(_cmd)];
-    [value callWithArguments:nil];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewWillLayoutSubviews];
-    JSValue *value = [self.functions valueForKey:NSStringFromSelector(_cmd)];
-    [value callWithArguments:nil];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillLayoutSubviews];
-    JSValue *value = [self.functions valueForKey:NSStringFromSelector(_cmd)];
-    [value callWithArguments:nil];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewWillLayoutSubviews];
-    JSValue *value = [self.functions valueForKey:NSStringFromSelector(_cmd)];
-    [value callWithArguments:nil];
-}
-
-@end*/

@@ -32,7 +32,10 @@ pod 'Taoprone'
 
 ## 踩坑指南
 
-- iOS 14.5 Safari 14.1.1不能断点调试，解决办法：安装Safari Technology Preview，若有闪退情况可重启模拟器
+### iOS 14.5 Safari 14.1.1不能断点调试
+
+- 使用iOS 13.5 模拟器
+- 安装Safari Technology Preview，若有闪退情况可重启模拟器
 
 ## License
 

@@ -9,13 +9,9 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - MCFoundation (0.2.2)
-  - MCJSONKit (0.5.2):
-    - MCFoundation (~> 0.2)
   - SnapKit (5.0.1)
   - Specta (1.0.7)
-  - Taoprone (0.1.0):
-    - MCJSONKit (~> 0.5)
+  - Taoprone (0.1.0)
 
 DEPENDENCIES:
   - Expecta
@@ -30,8 +26,6 @@ SPEC REPOS:
     - Expecta
     - "Expecta+Snapshots"
     - FBSnapshotTestCase
-    - MCFoundation
-    - MCJSONKit
     - SnapKit
     - Specta
 
@@ -43,11 +37,9 @@ SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   "Expecta+Snapshots": dcff217eef506dabd6dfdc7864ea2da321fafbb8
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  MCFoundation: 1c05141cbc900ec15618d7d4c75fb88719d7b658
-  MCJSONKit: 64251bf517b756436c185735b6f4edfdede9ec8e
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
-  Taoprone: ddbe7c3b676e58d87cafd0e9ca9ceb73e0d8d216
+  Taoprone: 4ce1fb194b7df2461d3b57f41f9985a4e6e3a7f4
 
 PODFILE CHECKSUM: 58b03665eaff75c6034aa26048a69bc58e618d8c
 

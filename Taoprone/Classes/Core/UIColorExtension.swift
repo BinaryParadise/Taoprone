@@ -9,10 +9,10 @@
 import UIKit
 
 extension UIColor {
-    func colorWithHex(hexColor: Int) -> Self {
-        let red = (hexColor & 0xFF0000) >> 16
-        let green = (hexColor & 0x00FF00) >> 8
-        let blue = (hexColor & 0x00FF) >> 0
+    func tp_colorWithHex(_ hex: Int) -> Self {
+        let red = (hex & 0xFF0000) >> 16
+        let green = (hex & 0x00FF00) >> 8
+        let blue = (hex & 0x00FF) >> 0
         return UIColor(red: CGFloat(red)/255.0, green: CGFloat(green)/255.0, blue: CGFloat(blue)/255.0, alpha: 1.0) as! Self
     }
 }

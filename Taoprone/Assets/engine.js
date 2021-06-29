@@ -13,8 +13,8 @@ var methodsMap = {setTitleforState: "setTitle:forState:",
                   setTitleColorforState: "setTitleColor:forState:",
                   addTargetactionforControlEvents: "addTarget:action:forControlEvents:"};
 
-if (Object.prototype.__c == undefined) {
-  Object.defineProperty(Object.prototype, '__c', {value: function(methodName) {
+if (Object.prototype.__native == undefined) {
+  Object.defineProperty(Object.prototype, '__native', {value: function(methodName) {
     if (!this.__oc_obj && !this.__oc_class) {
       if (methodName == undefined) {
         console.error(this, methodName);
@@ -49,7 +49,7 @@ function methodNameForOC(methodName, argcount) {
   if (methodsMap[methodName] != undefined) {
     return methodsMap[methodName];
   }
-  var ocname = argcount >= 1 ? methodName+":" : methodName;
+  var ocname = argcount >= 1 ? methodName+":" : methodName+"()";
   ocname = ocname.replace('__', ':');
   return ocname;
 }
