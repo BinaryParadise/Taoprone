@@ -9,8 +9,6 @@
 #import "TPEngine.h"
 #import "NSObject+TPBridge.h"
 
-static JSContext *jsContext;
-
 @interface TPEngine ()
 
 @property (nonatomic, strong) JSContext *jsContext;
@@ -20,12 +18,25 @@ static JSContext *jsContext;
 
 @implementation TPEngine
 
+- (instancetype)init {
+    if (self = [super init]) {
+        self.jsContext = [[JSContext alloc] initWithVirtualMachine:[JSVirtualMachine new]];
+        self.jsContext.exceptionHandler = ^(JSContext *context, JSValue *exception) {
+            NSLog(@"%@", exception);
+        };
+        //解释引擎
+        NSString *enginePath = [[self.class sdkBundle] pathForResource:@"engine.js" ofType:nil];
+        NSString *jsEngine = [NSString stringWithContentsOfFile:enginePath encoding:NSUTF8StringEncoding error:nil];
+        [self.jsContext evaluateScript:jsEngine withSourceURL:[NSURL fileURLWithPath:enginePath]];
+    }
+    return self;
+}
+
 - (id)moduleWithURL:(NSString *)filePath {
-    static NSString *_regexStr = @"(?<!\\\\)\\.\\s*(\\w+)\\s*\\(";
+    static NSString *_regexStr = @"(?<!console)\\.\\s*(\\w+)\\s*\\(";
     static NSString *_replaceStr = @".__c(\"$1\")(";
     NSRegularExpression* _regex;
-    //引擎
-    NSString *jsEngine = [NSString stringWithContentsOfFile:[[self.class sdkBundle] pathForResource:@"engine.js" ofType:nil] encoding:NSUTF8StringEncoding error:nil];
+    //解释引擎
     NSString *jsContent = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     _regex = [NSRegularExpression regularExpressionWithPattern:_regexStr options:0 error:nil];
     jsContent = [_regex stringByReplacingMatchesInString:jsContent options:0 range:NSMakeRange(0, jsContent.length) withTemplate:_replaceStr];
@@ -34,26 +45,17 @@ static JSContext *jsContext;
         [[NSFileManager defaultManager] createDirectoryAtPath:cachePath withIntermediateDirectories:YES attributes:nil error:nil];
     }
 
-    //合并业务脚本
-    NSString *merged = [jsEngine stringByAppendingString:jsContent];
     NSString *mainJS = [cachePath stringByAppendingString:@"/main.js"];
-    [merged writeToFile:mainJS atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    [jsContent writeToFile:mainJS atomically:YES encoding:NSUTF8StringEncoding error:nil];
 
-    if (!jsContext) {
-        jsContext = [[JSContext alloc] initWithVirtualMachine:[JSVirtualMachine new]];
-    }
-    jsContext.exceptionHandler = ^(JSContext *context, JSValue *exception) {
-        NSLog(@"%@", exception);
-    };
-    jsContext[@"TPBridge"] = [[TPBridgeExport alloc] init];
-    [jsContext evaluateScript:merged withSourceURL:[NSURL fileURLWithPath:mainJS]];
-    jsContext[@"console"][@"log"] = ^(NSString *msg) {
+    TPBridgeExport *bridge = [TPBridgeExport new];
+    bridge.context = self.jsContext;
+    self.jsContext[@"TPBridge"] = bridge;
+    [self.jsContext evaluateScript:jsContent withSourceURL:[NSURL fileURLWithPath:mainJS]];
+    self.jsContext[@"nslog"] = ^(NSString *msg) {
         NSLog(@"%@", msg);
     };
-    jsContext[@"console"][@"error"] = ^(NSString *msg) {
-        NSLog(@"error: %@", msg);
-    };
-    return [jsContext[@"initModule"] callWithArguments:nil].toObject;
+    return [self.jsContext[@"initModule"] callWithArguments:nil].toObject;
 }
 
 + (NSBundle *)sdkBundle {    
@@ -63,6 +65,7 @@ static JSContext *jsContext;
 
 - (void)dealloc {
     self.jsContext = nil;
+    NSLog(@"%s+%d", __FUNCTION__, __LINE__);
 }
 
 @end

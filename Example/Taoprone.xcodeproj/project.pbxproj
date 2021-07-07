@@ -24,6 +24,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		C9E498892693F78D0065E696 /* TestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E498882693F78D0065E696 /* TestObject.m */; };
 		CE2B1B84237BA70D00789E85 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = CE2B1B83237BA70D00789E85 /* main.js */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,8 @@
 		87557082052CBCD22EF837B4 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		90F1545EBBA967AE39DB3BB0 /* Pods-Taoprone_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taoprone_Example.release.xcconfig"; path = "Target Support Files/Pods-Taoprone_Example/Pods-Taoprone_Example.release.xcconfig"; sourceTree = "<group>"; };
 		943BD70AC1C9332EE46080EB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		C9E498872693F78D0065E696 /* TestObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestObject.h; sourceTree = "<group>"; };
+		C9E498882693F78D0065E696 /* TestObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestObject.m; sourceTree = "<group>"; };
 		CE2B1B83237BA70D00789E85 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		D238B42C6366BB1B58CACFED /* Pods-Taoprone_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taoprone_Example.debug.xcconfig"; path = "Target Support Files/Pods-Taoprone_Example/Pods-Taoprone_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D8375235D69E5CA89F973A2A /* Taoprone.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Taoprone.podspec; path = ../Taoprone.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -154,6 +157,8 @@
 				6003F59D195388D20070C39A /* TAPAppDelegate.m */,
 				6003F5A5195388D20070C39A /* TAPViewController.h */,
 				6003F5A6195388D20070C39A /* TAPViewController.m */,
+				C9E498872693F78D0065E696 /* TestObject.h */,
+				C9E498882693F78D0065E696 /* TestObject.m */,
 			);
 			name = "Example for Taoprone";
 			path = Taoprone;
@@ -399,6 +404,7 @@
 			files = (
 				6003F59E195388D20070C39A /* TAPAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* TAPViewController.m in Sources */,
+				C9E498892693F78D0065E696 /* TestObject.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

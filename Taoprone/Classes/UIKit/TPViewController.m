@@ -25,7 +25,6 @@
     [super viewWillLayoutSubviews];
     JSValue *value = [self.functions valueForKey:NSStringFromSelector(_cmd)];
     [value callWithArguments:nil];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -50,6 +49,20 @@
     [super viewWillLayoutSubviews];
     JSValue *value = [self.functions valueForKey:NSStringFromSelector(_cmd)];
     [value callWithArguments:nil];
+}
+
+- (void)didMoveToParentViewController:(UIViewController *)parent {
+    if (!parent) {
+        [self.functions.copy enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, JSValue * _Nonnull obj, BOOL * _Nonnull stop) {
+            [obj.context.virtualMachine removeManagedReference:obj withOwner:self];
+        }];
+        [self.functions removeAllObjects];
+    }
+}
+
+- (void)dealloc
+{
+    NSLog(@"%s %d", __FUNCTION__, __LINE__);
 }
 
 @end

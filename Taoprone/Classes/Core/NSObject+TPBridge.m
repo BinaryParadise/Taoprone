@@ -19,6 +19,22 @@ static NSString * const __oc_isObj      = @"__oc_isObj";
 
 @implementation NSObject (TPBridge)
 
+- (void)setFunctions:(NSMutableDictionary *)functions {
+    objc_setAssociatedObject(self, @selector(functions), functions, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSMutableDictionary *)functions {
+    id obj = objc_getAssociatedObject(self, _cmd);
+    if (!obj) {
+        [self setFunctions:NSMutableDictionary.dictionary];
+    }
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+@end
+
+@implementation TPBridgeExport
+
 - (NSInvocation *)invocationWithClass:(Class)cls target:(id)target method:(NSString *)method {
     NSMethodSignature *methodSign;
     SEL selector = NSSelectorFromString(method);
@@ -59,6 +75,7 @@ static NSString * const __oc_isObj      = @"__oc_isObj";
             returnValue = (__bridge_transfer id)retVal;
         } else {
             returnValue = (__bridge id)retVal;
+            //[self.context.virtualMachine addManagedReference:returnValue withOwner:self];
         }
         return @{__oc_className: NSStringFromClass([returnValue class]), __oc_obj: returnValue, __oc_isObj:@YES};
     } else if (strncmp(returnType, "v", 1) == 0) {
@@ -79,30 +96,16 @@ static NSString * const __oc_isObj      = @"__oc_isObj";
     return @{__oc_className: NSStringFromClass([returnValue class]), __oc_obj: returnValue, __oc_isObj:@NO};
 }
 
-- (void)setFunctions:(NSMutableDictionary *)functions {
-    objc_setAssociatedObject(self, @selector(functions), functions, OBJC_ASSOCIATION_RETAIN_NONATOMIC);    
-}
-
-- (NSMutableDictionary *)functions {
-    return objc_getAssociatedObject(self, _cmd);
-}
-
 - (void)invoke:(NSDictionary *)typeInfo addFunction:(JSValue *)function forName:(NSString *)name {
-    if (typeInfo.count) {
-        [self invoke:typeInfo method:NSStringFromSelector(@selector(invoke:addFunction:forName:)) arguments:@[@{}, function, name]];
-        return;
-    }
-    if (!self.functions) {
-        self.functions = [NSMutableDictionary dictionary];
-    }
-    
+    NSObject *obj = typeInfo[__oc_obj];
     if (name) {
-        self.functions[name] = function;
+        [self.context.virtualMachine addManagedReference:function withOwner:self.context];
+        obj.functions[name] = function;
     }
 }
 
-@end
-
-@implementation TPBridgeExport
+- (void)dealloc {
+    NSLog(@"%s+%d", __FUNCTION__, __LINE__);
+}
 
 @end
